@@ -74,6 +74,8 @@ This repository contains configuration files and scripts to deploy Apache Airflo
   
     Open your browser and navigate to `http://localhost:8081`. Use the credentials specified in your secrets file to log in.
 
+    Unpause paused DAGs from the UI to start scheduling tasks.
+
 ## Adding DAGs
 
 All DAGs are stored in the `dags/` directory. To add a new DAG:
