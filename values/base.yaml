@@ -6,10 +6,12 @@ airflow:
 dags:
   gitSync:
     enabled: true
-    repo: https://github.com/andrecaido/airflow-dags
+    repo: https://github.com/andrecaiado/airflow-deploy
     branch: main
     subPath: dags
 
 config:
   core:
     load_examples: 'False'
+  webserver:
+    expose_config: 'True'

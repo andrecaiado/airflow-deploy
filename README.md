@@ -8,6 +8,13 @@ This repository contains configuration files and scripts to deploy Apache Airflo
 - Helm 3.10+ installed
 - kubectl configured to interact with your Kubernetes cluster
 
+## Project Structure
+
+- `dags/` - Contains all Airflow DAGs (Directed Acyclic Graphs)
+- `values/` - Helm chart configuration files for different environments
+- `secrets/` - Sensitive configuration (gitignored)
+- `scripts/` - Deployment and utility scripts
+
 ## Deployment Steps
 
 1. **Clone the repository:**
@@ -66,6 +73,17 @@ This repository contains configuration files and scripts to deploy Apache Airflo
     ```
   
     Open your browser and navigate to `http://localhost:8081`. Use the credentials specified in your secrets file to log in.
+
+## Adding DAGs
+
+All DAGs are stored in the `dags/` directory. To add a new DAG:
+
+1. Create a new Python file in the `dags/` directory
+2. Define your DAG following Airflow's conventions
+3. Commit and push your changes to the repository
+4. Git-sync will automatically sync the DAGs to your Airflow deployment within a few minutes
+
+See [dags/example_dag.py](./dags/example_dag.py) for a sample DAG structure.
 
 ## Cleanup
 
