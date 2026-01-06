@@ -15,3 +15,10 @@ config:
     load_examples: 'False'
   webserver:
     expose_config: 'True'
+  logging:
+    remote_logging: 'False'
+
+workers:
+  persistence:
+    enabled: true
+    size: 1Gi
