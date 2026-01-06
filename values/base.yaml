@@ -22,3 +22,13 @@ workers:
   persistence:
     enabled: true
     size: 1Gi
+
+webserver:
+  livenessProbe:
+    initialDelaySeconds: 60
+    timeoutSeconds: 30
+    periodSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 60
+    timeoutSeconds: 30
+    periodSeconds: 30
