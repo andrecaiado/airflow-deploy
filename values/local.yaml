@@ -1,5 +1,8 @@
 executor: CeleryExecutor
 
+triggerer:
+  enabled: false
+
 postgresql:
   enabled: true
   image:
