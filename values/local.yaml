@@ -1,0 +1,12 @@
+executor: CeleryExecutor
+
+postgresql:
+  enabled: true
+  image:
+    tag: latest
+
+redis:
+  enabled: true
+
+ingress:
+  enabled: false

@@ -1,0 +1,15 @@
+airflow:
+  image:
+    repository: apache/airflow
+    tag: 2.9.3
+
+dags:
+  gitSync:
+    enabled: true
+    repo: https://github.com/andrecaido/airflow-dags
+    branch: main
+    subPath: dags
+
+config:
+  core:
+    load_examples: 'False'
