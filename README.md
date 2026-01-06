@@ -1,6 +1,8 @@
 # Airflow deployment in Kubernetes
 
-This repository contains configuration files and scripts to deploy Apache Airflow in a Kubernetes cluster using Helm charts.
+This repository contains configuration files and scripts to deploy Apache Airflow in a Kubernetes cluster using Helm charts. 
+
+This setup is currenlty designed for local development and testing purposes, but can be adapted for staging and production environments.
 
 ## Prerequisites
 
@@ -24,14 +26,30 @@ This repository contains configuration files and scripts to deploy Apache Airflo
    cd airflow-deploy
    ```
 
-2. **Add the Helm repository for Airflow:**
+2. **Start Kubernetes cluster:**
+
+   If you are deploying locally, ensure your Kubernetes cluster is running. For example, if you are using Minikube:
+
+   ```bash
+   minikube start --cpus=4 --memory=8192 --disk-size=20g
+   ```
+
+   If you are already running cluster but want to run it with specific resource allocations, you should stop or even delete the existing cluster and start it again with the desired configurations:
+
+   ```bash
+   minikube stop
+   minikube delete
+   minikube start --cpus=4 --memory=8192 --disk-size=20g
+   ```
+
+3. **Add the Helm repository for Airflow:**
 
    ```bash
    helm repo add apache-airflow https://airflow.apache.org
    helm repo update
    ```
 
-2. **Customize configuration files:**
+4. **Customize configuration files:**
 
    Modify the values files located in the `values` directory to suit your deployment needs. You can create separate files for different environments (e.g., `local`, `staging`, `production`).
 
@@ -41,7 +59,7 @@ This repository contains configuration files and scripts to deploy Apache Airflo
 
    Refer to the [official Helm chart documentation](https://airflow.apache.org/docs/helm-chart/stable/index.html) for a complete list of configurable options.
 
-3. **Run the deployment script:**
+5. **Run the deployment script:**
 
    The `deploy.sh` script will create a namespace for Airflow and install the Helm chart in the specified environment and with the configurations for the chosen environment.
 
@@ -54,7 +72,7 @@ This repository contains configuration files and scripts to deploy Apache Airflo
 
    Replace `<environment>` with the desired environment. The environments must match the names of the configuration files in the `values` directory (e.g., `local`, `staging`, `production`). This is optional and defaults to `local` if not provided.
 
-4. **Monitor the deployment:**
+6. **Monitor the deployment:**
 
     You can monitor the deployment process using:
   
@@ -64,7 +82,7 @@ This repository contains configuration files and scripts to deploy Apache Airflo
     
     Ensure all pods are in the `Running` state before proceeding.
 
-5. **Access the Airflow web UI:**
+7. **Access the Airflow web UI:**
 
     Forward the port to access the Airflow web server:
   
@@ -95,3 +113,8 @@ To uninstall Airflow and clean up the resources, run the following command:
 helm uninstall airflow --namespace airflow && kubectl delete namespace airflow
 ```
 
+To stop your local Kubernetes cluster (if using Minikube):
+
+```bash
+minikube stop
+```
